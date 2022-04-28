@@ -3,6 +3,9 @@ import React from "react";
 type AccordionPropsType = {
     titleValue: string
     collapsed: boolean
+    /**
+     * Callback that is called when any item clicked
+     */
     onChange: ()=>void
 }
 
