@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
-import Accordion, {AccordionTitlePropsType} from './Accordion';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Accordion from './Accordion';
 import {action} from "@storybook/addon-actions";
-
-
 
 export default {
     title: 'Accordion',
@@ -11,36 +8,20 @@ export default {
     };
 
 const callback = action ('accordion mode change event fired');
-const onClickCallback = action('some item was clicked')
-const callbackProps = {
-    onChange: callback,
-    onClick: onClickCallback
-}
+const onClickCallback = action ('some item was clicked');
 
-const Template: ComponentStory<typeof Accordion> =(args)=> <Accordion {...args} />
+export const MenuCollapsedMode = () => <Accordion titleValue={'Menu'} collapsed={true} onChange={callback} onClick={onClickCallback} items={[]}/>
 
-export const MenuСollapsedAccordion = Template.bind({});
-MenuСollapsedAccordion.args = {
-    ...callbackProps,
-    titleValue: 'Menu',
-    collapsed: true,
-};
+export const UserUncollapsedMode = () => <Accordion titleValue={'Users'} collapsed={false} onChange={callback} onClick={onClickCallback} items={[{title:'dimych', value: 1}, {title:'vslera', value: 2}, {title:'artem', value: 3},]}/>
 
-export const UserUncollapsedAccordion = Template.bind({});
-UserUncollapsedAccordion.args = {
-    ...callbackProps,
-    titleValue: 'Users',
-    collapsed: false,
-};
-
-const ModeChanging: ComponentStory<typeof Accordion> =(args)=> {
+export const ModeChanging = () => {
     const [value, setValue]=useState<boolean>(true)
-    return <Accordion {...args} collapsed={value} onChange={()=>setValue(!value)}/>
+    return <Accordion  titleValue={'Users'} collapsed={value} onChange={()=>setValue(!value)}
+                       onClick={(value)=>{alert(`ты нажал на ${value}`)}}
+                       items={[
+                           {title:'dimych', value: 1},
+                           {title:'vslera', value: 2},
+                           {title:'artem', value: 3},
+                       ]}
+    />
 }
-
-export const ModeAccordion = ModeChanging.bind({});
-ModeAccordion.args = {
-    ...callbackProps,
-    titleValue: 'Users',
-};
-
