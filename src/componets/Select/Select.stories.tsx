@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Select} from "./Select";
+import {action} from "@storybook/addon-actions";
 
 export default {
     title: 'Select',
@@ -7,12 +8,13 @@ export default {
 }
 
 export const ModeSelect = () => {
-    const [value, setValue]=useState<boolean>(true)
-    return <Select  value={'Users'}  onChange={()=>setValue(!value)}
+    const [value, setValue]=useState('2')
+    return <Select  value={value}
+                    onChange={setValue}
                        items={[
-                           {title:'dimych', value: 1},
-                           {title:'vslera', value: 2},
-                           {title:'artem', value: 3},
+                           {title:'Dimych', value: "1"},
+                           {title:'Valera', value: "2"},
+                           {title:'Artem', value: "3"},
                        ]}
     />
 }
