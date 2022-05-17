@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 import {Select} from "./Select";
-import {action} from "@storybook/addon-actions";
 
 export default {
     title: 'Select',
     component: Select
 }
 
+const SelectMemo = React.memo(Select)
+
 export const ModeSelect = () => {
     const [value, setValue]=useState('2')
-    return <Select  value={value}
+    return <SelectMemo  value={value}
                     onChange={setValue}
                        items={[
                            {title:'Dimych', value: "1"},

@@ -8,10 +8,12 @@ export default {
     component: OnOff
     };
 
-export const OnMode = () => <OnOff on={true} onChange={x=>x} />;
-export const OffMode = () => <OnOff on={false} onChange={x=>x} />;
+const OnOffMemo = React.memo(OnOff)
+
+export const OnMode = () => <OnOffMemo on={true} onChange={x=>x} />;
+export const OffMode = () => <OnOffMemo on={false} onChange={x=>x} />;
 export const ModeChange = () => {
     const [value, setValue] = useState<boolean>(true)
-    return <OnOff on={value} onChange={setValue}/>
+    return <OnOffMemo on={value} onChange={setValue}/>
 };
 
