@@ -53,3 +53,21 @@ export const SetTimeoutExample = () => {
     </>
 }
 
+export const Time = () => {
+    // const [fake, setFake] = useState(1)
+    // const [counter, setCounter] = useState(1)
+
+    let a = new Date()
+    //
+    // useEffect(()=> {
+    //     setInterval(()=>{
+    //     setCounter(a.getSeconds)
+    // }, 1000)
+    // }, [a])
+
+
+    return <>
+        {a}
+    </>
+}
+
