@@ -1,12 +1,8 @@
 import React, {useEffect, useState} from "react";
 
-type PropsType = {
-
-}
-
 const get2digitsString = (x:number) => x < 10 ? "0" + x : x
 
-export const Clock: React.FC<PropsType> = (props) => {
+export const Clock = () => {
     const [date, setDate] = useState(new Date())
 
     useEffect(()=>{
